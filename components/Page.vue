@@ -3,7 +3,7 @@
     <slot name="top" />
     <article class="page-article">
       <Content class="theme-antdocs-content page-article__body"/>
-      <Preview v-if="data.isShowPreview"  :src="previewURL" class="page-article__preview"/>
+      <Preview v-if="this.$frontmatter && this.$frontmatter.isShowPreview"  :src="previewURL" class="page-article__preview"/>
     </article>
     <PageEdit />
 
@@ -18,6 +18,11 @@ import PageEdit from '@theme/components/PageEdit.vue'
 import PageNav from '@theme/components/PageNav.vue'
 import Preview from '@theme/components/Preview.vue'
 export default {
+  data() {
+    return {
+      isDivider: false
+    }
+  },
   components: { PageEdit, PageNav,Preview },
   props: ['sidebarItems'],
   computed: {

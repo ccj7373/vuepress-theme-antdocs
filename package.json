@@ -1,7 +1,7 @@
 {
   "name": "vuepress-theme-yxj-antdocs-phone",
   "title": "AntDocs of VuePress for phone",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "An Ant Design style theme for VuePress.",
   "main": "index.js",
   "keywords": [
