@@ -3,7 +3,7 @@
     <slot name="top" />
     <article class="page-article">
       <Content class="theme-antdocs-content page-article__body"/>
-      <Preview :src="previewURL" class="page-article__preview"/>
+      <Preview v-if="data.isShowPreview"  :src="previewURL" class="page-article__preview"/>
     </article>
     <PageEdit />
 
