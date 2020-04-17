@@ -16,7 +16,7 @@
         :src="src"
         scrolling="auto"
         frameborder="0"
-        height="515"
+        height="715"
         width="420"
         class="simulator__preview"
       ></iframe>

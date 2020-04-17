@@ -47,7 +47,7 @@ export default {
         }
         .page-article__preview {
             min-width: 320px;
-            height: 580px;
+            height: 780px;
             margin: 90px 30px 30px 30px;
         }
     }
