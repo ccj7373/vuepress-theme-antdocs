@@ -17,7 +17,7 @@
       <a-button type="primary" @click="optionSubmit">设置</a-button>
       <a-button @click="handleCancel">关闭</a-button>
     </a-modal>
-    <main class="simulator" @click="showModal">
+    <main class="simulator">
       <header class="simulator__header-bar">
         <div class="bar__operator">中国移动</div>
         <div class="bar__time">19:01:30</div>
