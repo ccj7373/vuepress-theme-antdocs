@@ -1,4 +1,4 @@
-<template>
+\<template>
   <div>
     <a-button type="primary" @click="showModal">选项</a-button>
     <a-modal
@@ -13,6 +13,7 @@
         :options="options"
         :plus="false"
         :height="'400px'"
+        ref="jsoneditor"
       />
       <a-button type="primary" @click="optionSubmit">设置</a-button>
       <a-button @click="handleCancel">关闭</a-button>
@@ -49,25 +50,53 @@ export default {
       type: String,
     },
   },
+  watch: {
+    src() {
+      this.init();
+    },
+  },
   components: {
     VJsoneditor,
   },
   data: () => ({
     json: {},
-    options: {},
+    options: {
+      mode: "tree",
+      modes: ["code", "form", "text", "tree", "view", "preview"], // allowed modes
+      onError: function (err) {
+        alert(err.toString());
+      },
+      onModeChange: function (newMode, oldMode) {
+        console.log("Mode switched from", oldMode, "to", newMode);
+      },
+    },
     visible: false,
+    mode:'',
   }),
   mounted() {
-    if (this.$frontmatter && this.$frontmatter.defaultData) {
-      this.$set(this, "json", this.$frontmatter.defaultData);
-    }
+    this.init();
   },
   methods: {
+    init() {
+      if (this.$frontmatter && this.$frontmatter.defaultData) {
+        this.$set(this, "json", this.$frontmatter.defaultData);
+      } else {
+        this.$set(this, "json", {});
+      }
+      this.mode = "tree";
+    },
     handleCancel() {
       this.visible = false;
     },
     showModal() {
       this.visible = true;
+      this.$nextTick(() => {
+        if(this.mode)
+        {
+          this.$refs.jsoneditor.editor.setMode(this.mode);
+          this.mode="";
+        }
+      });
     },
     optionSubmit() {
       document
